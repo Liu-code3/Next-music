@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss" as *;
 .search {
   width: 300px;
   position: relative;
@@ -9,7 +9,7 @@
     line-height: 38px;
     margin-top: 18px;
     @include bgSpride();
-    background-position: 0px 0px;
+    background-position: 0 0;
   }
 
   .input {

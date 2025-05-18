@@ -1,5 +1,5 @@
 "use client";
-import type { FC } from "react";
+import type { FC, KeyboardEvent } from "react";
 import { memo, useState } from "react";
 import classNames from "classnames";
 
@@ -14,7 +14,8 @@ const Search: FC = () => {
 
     function handleKeyDown (e: KeyboardEvent<HTMLInputElement>) {
         if (e.key === 'Enter') {
-            console.log(e.target.value, 'vv')
+            const targetVal = (e.target as HTMLInputElement).value
+            console.log(targetVal, 'vv')
         }
     }
 
