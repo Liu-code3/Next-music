@@ -2,11 +2,13 @@
 import type { FC, KeyboardEvent } from "react";
 import { memo, useState } from "react";
 import classNames from "classnames";
+import { useGetSuggestSearchQuery } from "@/store/services/homeApi";
 
 import styles from './index.module.scss'
 
 const Search: FC = () => {
     const [inputFocus, setInputFocus] = useState(false)
+    const { data, error,  isLoading } = useGetSuggestSearchQuery(null)
 
     function handleInputFocus (isFocus: boolean) {
         setInputFocus(isFocus)
@@ -37,14 +39,21 @@ const Search: FC = () => {
                 styles[inputFocus ? 'show' : 'hide']
             )}>
                 <div className={styles.shadow}></div>
-                <h2>热门搜索</h2>
-                <ul>
-                    <li>迪士尼Q2</li>
-                    <li>日常元素</li>
-                    <li>珀莱雅</li>
-                    <li>真无线</li>
-                    <li>漫步者</li>
-                </ul>
+                {
+                    isLoading ? 'loading' : <div>
+                        <h2>{data?.data.defaultKey}</h2>
+                        <ul>
+                            {
+                                data?.data.configKey.map((item, index) => {
+                                    return <li key={index}>{item[index + 1]}</li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                }
+                {
+                    error ? 'error' : ''
+                }
             </div>
         </div>
     )
