@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import 'normalize.css';
 import "@/styles/globals.scss";
 import NavBar from "@/components/nav-bar";
@@ -31,17 +32,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <ReduxProvider>
-              <header>
-                  <NavBar></NavBar>
-              </header>
-              <main>
-                  {children}
-              </main>
-              <footer>
-                  footer
-              </footer>
-          </ReduxProvider>
+          <AntdRegistry>
+              <ReduxProvider>
+                  <header>
+                      <NavBar></NavBar>
+                  </header>
+                  <main>
+                      {children}
+                  </main>
+                  <footer>
+                      footer
+                  </footer>
+              </ReduxProvider>
+          </AntdRegistry>
       </body>
     </html>
   );
