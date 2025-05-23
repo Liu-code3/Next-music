@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import TopSwiper from "@/components/top-swiper";
 
 export const metadata = {
     title: '云音乐商城 - 音乐购有趣',
@@ -20,7 +20,7 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div className="wrapper">
-            <Button type="primary">Button</Button>
+           <TopSwiper></TopSwiper>
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
