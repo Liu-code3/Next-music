@@ -19,7 +19,7 @@ interface IBannersList {
     const bannerRef = useRef<CarouselRef>(null);
 
     useEffect(() => {
-        fetch('/api/homeInfo')
+        fetch('/api/banners')
             .then(res => res.json())
             .then(data => {
                 setBanners(data.data.banners)
