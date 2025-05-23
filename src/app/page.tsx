@@ -1,4 +1,5 @@
 import TopSwiper from "@/components/top-swiper";
+import TabCategory from '@/components/tab-category';
 
 export const metadata = {
     title: '云音乐商城 - 音乐购有趣',
@@ -17,12 +18,11 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div className="" style={{ overflow: 'hidden' }}>
         <div className="wrapper">
-           <TopSwiper></TopSwiper>
+            <TopSwiper></TopSwiper>
+            <TabCategory></TabCategory>
         </div>
-      </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
        底部
       </footer>
