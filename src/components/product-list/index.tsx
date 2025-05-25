@@ -1,10 +1,10 @@
 "use client";
 
 import type {FC} from 'react';
-import {useState, useEffect, useMemo, memo} from "react";
+import {useState, useEffect, memo} from "react";
 import SectionTitle from "@/components/section-title";
 import GridView from "@/components/grid-view";
-
+import DigitalPanel from "@/components/digital-panel";
 
 
 /*
@@ -34,10 +34,6 @@ const ProductList: FC = () => {
     const [product, setProduct] = useState<ProductListDataType>([]);
     const [allProduct, setallProduct] = useState<ProductListDataType>([]);
 
-    // 优化 memo 组件的引用类型 Props
-    const productProp = useMemo(() => product, [product]);
-    const allProductProp = useMemo(() => allProduct, [allProduct]);
-
     useEffect(exec, []);
 
     function exec() {
@@ -57,9 +53,10 @@ const ProductList: FC = () => {
     return (
         <div className="ProductList">
             <SectionTitle title="编辑推荐" />
-            <GridView data={productProp} />
+            <GridView data={product} />
+            <DigitalPanel />
             <SectionTitle title="热门商品" />
-            <GridView data={allProductProp} />
+            <GridView data={allProduct} />
         </div>
     );
 };
