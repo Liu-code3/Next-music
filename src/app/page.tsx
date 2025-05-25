@@ -1,6 +1,9 @@
 import TopSwiper from "@/components/top-swiper";
 import TabCategory from '@/components/tab-category';
 import Recommends from "@/components/recommends";
+import styles from "./page.module.scss";
+import SectionTitle from "@/components/section-title";
+import GridView from '@/components/grid-view'
 
 export const metadata = {
     title: '云音乐商城 - 音乐购有趣',
@@ -19,11 +22,14 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="" style={{ overflow: 'hidden' }}>
+    <div className={styles.home}>
+        <TopSwiper />
+        <TabCategory />
+        <Recommends />
+
         <div className="wrapper">
-            <TopSwiper />
-            <TabCategory />
-            <Recommends />
+            <SectionTitle title="编辑推荐" />
+            <GridView />
         </div>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
        底部
