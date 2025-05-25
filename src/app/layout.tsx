@@ -4,8 +4,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import 'normalize.css';
 import "@/styles/globals.scss";
-import NavBar from "@/components/nav-bar";
 import ReduxProvider from "@/store/provider";
+import NavBar from "@/components/nav-bar";
+import Footer from '@/components/footer'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,7 @@ export default function RootLayout({
                       {children}
                   </main>
                   <footer>
-                      footer
+                      <Footer />
                   </footer>
               </ReduxProvider>
           </AntdRegistry>

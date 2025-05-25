@@ -31,9 +31,6 @@ export default function Home() {
         <div className="wrapper">
             <ProductList />
         </div>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-       底部
-      </footer>
     </div>
   );
 }
