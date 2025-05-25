@@ -13,7 +13,7 @@ import GridView from "@/components/grid-view";
  * 编写者: ls
  */
 
-interface IProducts {
+export interface IProducts {
     id: number;
     name: string;
     coverUrl: string;
@@ -27,11 +27,16 @@ export interface IHotProduct {
     products: IProducts;
 }
 
+export type ProductItemType = IHotProduct | IProducts;
+export type ProductListDataType = ProductItemType[];
+
 const ProductList: FC = () => {
-    const [product, setProduct] = useState<IHotProduct[]>([]);
+    const [product, setProduct] = useState<ProductListDataType>([]);
+    const [allProduct, setallProduct] = useState<ProductListDataType>([]);
 
     // 优化 memo 组件的引用类型 Props
     const productProp = useMemo(() => product, [product]);
+    const allProductProp = useMemo(() => allProduct, [allProduct]);
 
     useEffect(exec, []);
 
@@ -41,12 +46,20 @@ const ProductList: FC = () => {
             .then(data => {
                 setProduct(data.data.hotProduct)
             })
+
+        fetch('/api/allProduct')
+            .then(res => res.json())
+            .then(data => {
+                setallProduct(data.data.allProduct)
+            })
     }
 
     return (
         <div className="ProductList">
             <SectionTitle title="编辑推荐" />
             <GridView data={productProp} />
+            <SectionTitle title="热门商品" />
+            <GridView data={allProductProp} />
         </div>
     );
 };
