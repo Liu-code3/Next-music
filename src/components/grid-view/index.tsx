@@ -1,38 +1,22 @@
 "use client";
 
-import {memo, useEffect, useState} from 'react';
+import {memo} from 'react';
 import type { FC } from 'react';
 import {Col, Row} from "antd";
 import styles from './index.module.scss'
+import type {IHotProduct} from "@/components/product-list";
 import GridViewItem from '@/components/grid-view-item'
 
-interface IProducts {
-    id: number;
-    name: string;
-    coverUrl: string;
-    minPrice: number;
-    originalCost: number;
-    couponLabelDesc: string;
+interface IProps {
+    data: IHotProduct[]
 }
-export interface IHotProduct {
-    id: number;
-    name: string;
-    products: IProducts;
-}
-const GridView: FC = () => {
-    const [product, setProduct] = useState<IHotProduct[]>([])
-    useEffect(() => {
-        fetch('/api/hotproduct')
-            .then(res => res.json())
-            .then(data => {
-                setProduct(data.data.hotProduct)
-            })
-    }, []);
+const GridView: FC<IProps> = (props) => {
+    const { data } = props
 
     return (
         <div className={styles['grid-view']}>
             <Row>
-                {product?.map((item, index) => {
+                {data?.map((item, index) => {
                     return (
                         <Col span={6} key={item.id}>
                             <div className={styles['view-item']}>

@@ -1,7 +1,7 @@
 "use client";
 import {memo} from "react";
 import type { FC, ReactNode } from 'react';
-import type {IHotProduct} from "@/components/grid-view";
+import type {IHotProduct} from "@/components/product-list";
 
 import Link from 'next/link';
 import Image from 'next/image';
