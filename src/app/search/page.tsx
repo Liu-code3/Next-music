@@ -1,6 +1,7 @@
 import type {FC} from 'react';
 import {memo} from "react";
 import GridView from "@/components/grid-view";
+import BreadCrumb from "@/components/bread-crumb";
 
 interface IProps {
     searchParams: {
@@ -12,8 +13,23 @@ interface IProps {
  * 创建日期: 2025/5/31 15:28
  * 编写者: ls
  */
-const SearchDeatil: FC<IProps> = async (props) => {
+const SearchDetail: FC<IProps> = async (props) => {
     const {searchParams} = props;
+
+    const links = [
+        {
+            name: "首页",
+            link: "/",
+            id: 10413,
+        },
+        {
+            // name: "耳机",
+            name: searchParams.q || '全部',
+            link: null,
+            id: 10414,
+        },
+    ];
+
 
     // 带选项的请求
     const freshRes = await fetch(`http://localhost:3000/api/search/product?q=${searchParams.q}`, {
@@ -27,10 +43,11 @@ const SearchDeatil: FC<IProps> = async (props) => {
 
     return (
         <div className="wrapper">
+            <BreadCrumb links={links}></BreadCrumb>
             <GridView data={freshData.data}></GridView>
         </div>
     );
 };
 
-export default memo(SearchDeatil);
+export default memo(SearchDetail);
 
