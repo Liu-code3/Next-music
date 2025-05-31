@@ -33,19 +33,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <AntdRegistry>
               <ReduxProvider>
                   <header>
                       <NavBar></NavBar>
                   </header>
                   <main>
-                      {children}
+                      <AntdRegistry>{children}</AntdRegistry>
                   </main>
                   <footer>
                       <Footer />
                   </footer>
               </ReduxProvider>
-          </AntdRegistry>
       </body>
     </html>
   );
