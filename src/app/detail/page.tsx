@@ -16,19 +16,18 @@ import {Spin} from "antd";
  * 编写者: ls
  */
 const Detail: FC = () => {
-    // const id = props.searchParams.id
-    const [loading, setLoding] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [product, setProduct] = useState<{  webPic: string; products: ProductListDataType }>()
     const searchParams = useSearchParams()
     const id = searchParams.get('id')
     useEffect(exec, [id]);
 
     function exec() {
-        setLoding(true)
+        setLoading(true)
         fetch(`/api/special/getdetail?id=${id}`).then(res => {
             return res.json()
         }).then(data => {
-            setLoding(false)
+            setLoading(false)
             setProduct(data.data)
         })
     }

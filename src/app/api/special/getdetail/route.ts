@@ -4596,7 +4596,6 @@ function getDetailById(id: ValidId) {
     return { code: 200, data: listData[id] }
 }
 export async function GET  (request: Request) {
-    console.log(request.url, 'request')
     // 获取params参数
     const { searchParams } = new URL(request.url);
     const str = [ '68001','55001']
